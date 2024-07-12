@@ -5,28 +5,6 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-@app.route('/get-user/<user_id>')
-def getUser(user_id):
-    users={
-        "id": user_id,
-        "name":"jeevan rawal",
-        "country":"nepal"
-    }
-
-    extraData= request.args.get("email-address")
-    if extraData:
-        users["extra-data"]= extraData
-
-    return jsonify(users), 200
-
-@app.route('/create-user', methods=['POST'])
-def createUser():
-    data= request.get_json()
-
-    if data:
-        return jsonify("This is the response",data), 201
-    return "no data found!"
-
 @app.route('/generate-QrCode', methods=['POST'])
 def generateQrCode():
     data = request.get_json()
